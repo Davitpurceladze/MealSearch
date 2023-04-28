@@ -16,12 +16,12 @@
           </YoutubeButton>
         </div>
       </div>
-       
     </div>
 </template>
 
 
 <script setup>
+import YoutubeButton from './YoutubeButton.vue';
 
 const { meal } = defineProps({
   meal: {
