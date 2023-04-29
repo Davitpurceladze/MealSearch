@@ -40,7 +40,7 @@
       </div>
       <!-- youtue and source buttons-->
       <div class="mt-4">
-        <YoutubeButton :href="meal.strYoutube" >Youtube</YoutubeButton>
+        <YoutubeButton :href="meal.strYoutube" ></YoutubeButton>
         <a 
           :href="meal.strSource" 
           target="_blank" 

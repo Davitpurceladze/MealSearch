@@ -11,9 +11,7 @@
         <h3 class="font-bold">{{ meal.strMeal }}</h3>
         <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet tempora enim maxime id eum, ut omnis iusto</p>
         <div class="flex items-center justify-between">
-          <YoutubeButton :href="meal.strYoutube">
-            YouTube
-          </YoutubeButton>
+          <YoutubeButton :href="meal.strYoutube"></YoutubeButton>
         </div>
       </div>
     </div>
