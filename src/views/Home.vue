@@ -1,18 +1,24 @@
 <template>
-  <div class="flex flex-col p-8 ">
-     
+  <div class="p-8 pb-0 text-orange-500">
+    <h1 class="text-4xl font-bold mb-4">Random Meals</h1>
   </div>
+  <Meals :meals="meals"></Meals>
 </template>
 
 <script setup>
-import {  onMounted, ref } from "vue";
+import {  onMounted, ref, computed } from "vue";
 import axiosClient from '../axiosClient.js'
+import Meals from '../components/Meals.vue'
+import store from '../store'
 
-
+const meals = ref([])
 const ingredients = ref([])
 
 onMounted(async() => {
-  const response = await axiosClient.get('/list.php?i=list')
-  ingredients.value = response.data
+   for(let i=0; i<10; i++) {
+    axiosClient
+      .get('random.php')
+      .then(({data}) => meals.value.push(data.meals[0]))
+   }
 })
 </script>
