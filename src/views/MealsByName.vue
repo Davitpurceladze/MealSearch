@@ -8,17 +8,14 @@
       @change="searchMeals"
     />
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
-  </div>
+   <Meals :meals="meals"></Meals>
 </template>
 
 <script setup>
+import Meals from '../components/Meals.vue'
 import { ref, computed, onMounted } from 'vue';
 import store from '../store';
 import { useRoute } from 'vue-router';
-import YoutubeButton from '../components/YoutubeButton.vue';
-import MealItem from '../components/MealItem.vue';
 
 
 const route = useRoute()
@@ -27,7 +24,11 @@ const keyword = ref('')
 const meals = computed(() => store.state.searchedMeals)
 
 function searchMeals() {
-  store.dispatch('searchMeals', keyword.value)
+  if(keyword.value) {
+    store.dispatch('searchMeals', keyword.value)
+  } else {
+    store.commit('setSearchedMeals', [])
+  }
 
 }
 
